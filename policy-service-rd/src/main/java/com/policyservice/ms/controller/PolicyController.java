@@ -31,5 +31,4 @@ public class PolicyController {
 	public List<Policy> getPolicies(){
 		return policyService.getPolicies();
 	}
-
 }

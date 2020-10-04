@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.policyservice.ms.model.Customer;
+import com.policyservice.ms.model.CustomerGetForObject;
 import com.policyservice.ms.model.Policy;
 import com.policyservice.ms.repository.IPolicyRepository;
 
@@ -18,9 +19,21 @@ public class PolicyService {
 	@Autowired
 	CustomerService customerService;
 	
+	@Autowired
+	CustomerServiceGetForObject customerServiceAlternate;
+
+	/*
 	public Policy createPolicy(Policy policy) {
 		Customer customer;
 		customer = customerService.getCustomerDetails(policy.getCustomerDetails().getCustomerId());
+		policy.setCustomerDetails(customer);
+		return policyRepository.save(policy);
+	}
+	*/
+	
+	public Policy createPolicy(Policy policy) {
+		Customer customer;
+		customer = customerServiceAlternate.getCustomerDetails(policy.getCustomerDetails().getCustomerId());
 		policy.setCustomerDetails(customer);
 		return policyRepository.save(policy);
 	}
