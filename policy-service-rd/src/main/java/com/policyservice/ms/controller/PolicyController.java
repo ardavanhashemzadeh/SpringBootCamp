@@ -14,7 +14,7 @@ import com.policyservice.ms.service.PolicyService;
 @RestController
 public class PolicyController {
 	
-	@Autowired
+	@Autowired(required=false)
 	PolicyService policyService;
 	
 	@RequestMapping("/hello")
@@ -24,11 +24,17 @@ public class PolicyController {
 	
 	@RequestMapping(value="/policy",method = RequestMethod.POST)
 	public Policy createPolicy(@RequestBody Policy policy) {
+//		return policy;
 		return policyService.createPolicy(policy);
 	}
 	
 	@RequestMapping(value="/policies", method = RequestMethod.GET)
 	public List<Policy> getPolicies(){
 		return policyService.getPolicies();
+	}
+	
+	@RequestMapping(value="/policyUsingGetForObject", method = RequestMethod.POST)
+	public Policy createPolicyUsingGetForObject(@RequestBody Policy policy){
+		return policyService.createPolicyUsingGetForObject(policy);
 	}
 }

@@ -13,6 +13,7 @@ public class Policy {
 	private Date policyEffectiveDate;
 	private Date policyEndDate;
 	private Customer customerDetails;
+	private CustomerGetForObject customerGetForObjectDetails;
 	public String getPolicyId() {
 		return policyId;
 	}
@@ -37,10 +38,18 @@ public class Policy {
 	public void setPolicyEndDate(Date policyEndDate) {
 		this.policyEndDate = policyEndDate;
 	}
+
 	public Customer getCustomerDetails() {
 		return customerDetails;
 	}
-	public void setCustomerDetails(Customer customerDetails) {
-		this.customerDetails = customerDetails;
+	public void setCustomerDetails(Customer customer) {
+		this.customerDetails = customer;
+	}
+
+	public CustomerGetForObject getCustomerGetForObjectDetails() {
+		return customerGetForObjectDetails;
+	}
+	public void setCustomerGetForObjectDetails(CustomerGetForObject customerGetForObjectDetails) {
+		this.customerGetForObjectDetails = customerGetForObjectDetails;
 	}
 }

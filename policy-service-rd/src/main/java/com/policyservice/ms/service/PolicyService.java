@@ -16,25 +16,23 @@ public class PolicyService {
 	@Autowired
 	IPolicyRepository policyRepository;
 	
-	@Autowired
+	@Autowired(required=false)
 	CustomerService customerService;
 	
-	@Autowired
+	@Autowired(required=false)
 	CustomerServiceGetForObject customerServiceAlternate;
 
-	/*
 	public Policy createPolicy(Policy policy) {
 		Customer customer;
 		customer = customerService.getCustomerDetails(policy.getCustomerDetails().getCustomerId());
 		policy.setCustomerDetails(customer);
 		return policyRepository.save(policy);
 	}
-	*/
 	
-	public Policy createPolicy(Policy policy) {
-		Customer customer;
+	public Policy createPolicyUsingGetForObject(Policy policy) {
+		CustomerGetForObject customer;
 		customer = customerServiceAlternate.getCustomerDetails(policy.getCustomerDetails().getCustomerId());
-		policy.setCustomerDetails(customer);
+		policy.setCustomerGetForObjectDetails(customer);
 		return policyRepository.save(policy);
 	}
 	
